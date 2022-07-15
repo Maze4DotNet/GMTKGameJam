@@ -114,6 +114,16 @@ internal class DieDatastructure : MonoBehaviour
     }
 
     /// <summary>
+    /// 1 voor naar rechts draaien, dus het getal dat nu op Right staat, komt op Front.
+    /// -1 voor naar links draaien, dus het getal dat nu op Left staat, komt op Front.
+    /// </summary>
+    public void Rotate(int direction)
+    {
+        int front = _rangeH[1 + direction];
+        Init(Top, front);
+    }
+
+    /// <summary>
     /// v vertelt ons of we verticaal rollen.
     /// </summary>
     public int[] GetRange(Direction direction, out bool v)
