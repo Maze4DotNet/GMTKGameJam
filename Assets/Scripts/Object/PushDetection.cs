@@ -7,10 +7,18 @@ using UnityEngine;
 
 public class PushDetection : MonoBehaviour
 {
-    public GameObject _topHitbox;
-    public GameObject _bottomHitbox;
-    public GameObject _leftHitbox;
-    public GameObject _rightHitbox;
+    public PushableObjectHitboxScript _topHitbox;
+    public PushableObjectHitboxScript _bottomHitbox;
+    public PushableObjectHitboxScript _leftHitbox;
+    public PushableObjectHitboxScript _rightHitbox;
 
+    public Direction? CanBePushedInThisDirection()
+    {
+        if (_topHitbox.IsActive) return Direction.Down;
+        if (_bottomHitbox.IsActive) return Direction.Up;
+        if (_leftHitbox.IsActive) return Direction.Right;
+        if (_rightHitbox.IsActive) return Direction.Left;
 
+        return null;
+    }
 }

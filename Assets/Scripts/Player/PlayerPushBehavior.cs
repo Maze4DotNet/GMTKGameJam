@@ -10,6 +10,7 @@ internal class PlayerPushBehavior : MonoBehaviour
     public PlayerMovement _playerMovement;
 
     private GameObject _currentPushedObject = null;
+
     public Direction _pushingDirection { get; private set; }
 
     public void GetDxDy(out int dx, out int dy)
