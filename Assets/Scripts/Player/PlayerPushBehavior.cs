@@ -45,6 +45,46 @@ internal class PlayerPushBehavior : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        var other = collision.gameObject;
+        var pushDetection = other.GetComponent<PushDetection>();
+        if (pushDetection is null) return;
+
+        var maybePushInDir = pushDetection.CanBePushedInThisDirection();
+        if (maybePushInDir is null) return;
+
+        bool stillPushing = false;
+        var pushInDir = maybePushInDir.Value;
+        if (pushInDir == _playerMovement.CurrentFacingDirection)
+        {
+            switch (pushInDir)
+            {
+                case (Direction.Up):
+                {
+                    if (_playerMovement._movement.y == 1) stillPushing = true;
+                    break;
+                }
+                case (Direction.Down):
+                {
+                    if (_playerMovement._movement.y == -1) stillPushing = true;
+                    break;
+                }
+                case (Direction.Left):
+                {
+                    if (_playerMovement._movement.x == -1) stillPushing = true;
+                    break;
+                }
+                default:
+                {
+                    if (_playerMovement._movement.x == 1) stillPushing = true;
+                    break;
+                }
+            }
+        }
+        pushDetection.IsBeingPushed = stillPushing;
+    }
+
     private bool IsThisThePushedObjectOrNot(GameObject other)
     {
         if (_currentPushedObject is null)
@@ -61,21 +101,12 @@ internal class PlayerPushBehavior : MonoBehaviour
         return alreadyPushing;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        var other = collision.gameObject;
-        bool pushed = IsThisThePushedObjectOrNot(other);
-
-        if (!pushed) return;
-        _currentPushedObject = other;
-        _pushingDirection = _playerMovement.CurrentFacingDirection;
-    }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
         var other = collision.gameObject;
-        bool pushed = IsThisThePushedObjectOrNot(other);
+        var pushDetection = other.GetComponent<PushDetection>();
+        if (pushDetection is null) return;
 
-        if (pushed) _currentPushedObject = null;
+        pushDetection.IsBeingPushed = false;
     }
 }

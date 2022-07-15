@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField, Range(0f, 100f)] public float _moveSpeed = 5f;
     public Rigidbody2D _body;
-    Vector2 _movement;
+    public Vector2 _movement = new Vector2(0, 0);
 
     public Direction CurrentFacingDirection { get; set; } = Direction.Down;
 
