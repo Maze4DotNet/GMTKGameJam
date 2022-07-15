@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class PushableObjectHitboxScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public PushDetection _pushDetectionOfParent;
+
+    public bool IsActive { get; private set; }
+
+    private void CheckIfThisIsPlayer(Collider2D collision, bool enter)
     {
-        
+        var other = collision.gameObject;
+        if (other.tag == "Players") IsActive = enter;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        CheckIfThisIsPlayer(collision, true);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        CheckIfThisIsPlayer(collision, false);
     }
 }
