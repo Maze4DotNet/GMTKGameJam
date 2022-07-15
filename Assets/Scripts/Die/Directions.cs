@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-enum Direction
+public enum Direction
 {
     Up,
     Down,
