@@ -118,6 +118,7 @@ public class PushDetection : MonoBehaviour
     {
         yield return new WaitForSeconds(_globalParameters._rollDuration / 4);
         RotatePhase = (RotatePhase + 1) % 4;
+        _dieAnimator.SpinSprite(RotatePhase, dir);
         if (RotatePhase == 0) _actualDieScript.Rotate(dir);
         else StartCoroutine(WaitThenRotateFurther(dir));
     }
