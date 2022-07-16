@@ -144,6 +144,12 @@ public class ActualDieScript : MonoBehaviour
     {
         _die.Rotate(dir);
         SetNumbers();
+        StartCoroutine(WaitThenPutNumbersBack());
+    }
+
+    IEnumerator WaitThenPutNumbersBack()
+    {
+        yield return new WaitForSeconds(0.5f);
         Rotating = false;
     }
 }
