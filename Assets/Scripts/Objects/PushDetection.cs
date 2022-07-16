@@ -98,7 +98,7 @@ public class PushDetection : MonoBehaviour
             if (WillRotateWhenDone && !(_rotationButtonScript is null))
             {
                 WillRotateWhenDone = false;
-                int rotationDir = _rotationButtonScript.Press(_actualDieScript);
+                int rotationDir = _rotationButtonScript.Press();
                 _actualDieScript.Rotating = true;
                 StartCoroutine(WaitThenRotateFurther(rotationDir));
             }
