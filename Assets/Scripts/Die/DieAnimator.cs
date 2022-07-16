@@ -19,16 +19,16 @@ public class DieAnimator : MonoBehaviour
     {
         switch (dir)
         {
-            case Up:
+            case Direction.Up:
                 _spriteRenderer.sprite = _upAnim[frame];
                 break;
-            case Down:
+            case Direction.Down:
                 _spriteRenderer.sprite = _downAnim[frame];
                 break;
-            case Left:
+            case Direction.Left:
                 _spriteRenderer.sprite = _leftAnim[frame];
                 break;
-            case Right:
+            case Direction.Right:
                 _spriteRenderer.sprite = _rightAnim[frame];
                 break;
         }
