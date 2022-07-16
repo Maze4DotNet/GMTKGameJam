@@ -1125,6 +1125,11 @@ MonoBehaviour:
   - {fileID: 2146348789, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
   - {fileID: 755849084, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
   - {fileID: -837611108, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  _spinAnim:
+  - {fileID: 667798052, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: -997880574, guid: 7cccd6a360e24c14aa91e3773039bc7d, type: 3}
+  - {fileID: 2045022567, guid: 7cccd6a360e24c14aa91e3773039bc7d, type: 3}
+  - {fileID: 1222080915, guid: 7cccd6a360e24c14aa91e3773039bc7d, type: 3}
 --- !u!114 &8995551370228692572
 MonoBehaviour:
   m_ObjectHideFlags: 0
