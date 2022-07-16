@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Random = System.Random;
 
-public class DieDatastructure : MonoBehaviour
+public class DieDatastructure :MonoBehaviour
 {
     public int[] _rangeH = new int[3];
     public int[] _rangeV = new int[3];

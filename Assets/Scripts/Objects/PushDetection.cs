@@ -20,7 +20,9 @@ public class PushDetection : MonoBehaviour
     public PushableObjectHitboxScript _rightHitbox;
 
     public bool IsBeingPushed { get; set; }
-    public bool CanBePushed { get { return PushPhase == 0; }  }
+    public bool PhaseIsZero { get { return PushPhase == 0; } }
+
+    public bool CanBePushed { get; set; } = true;
     public int PushPhase { get; set; } = 0;
 
     public Vector2 _originalPos;
@@ -45,7 +47,7 @@ public class PushDetection : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!IsBeingPushed || !CanBePushed)
+        if (!IsBeingPushed || !CanBePushed || !PhaseIsZero)
         {
             _pushedTime = 0f;
             return;
@@ -65,6 +67,11 @@ public class PushDetection : MonoBehaviour
             return;
         }
         var dir = maybeDir.Value;
+        ActualRoll(dir);
+    }
+
+    public void ActualRoll(Direction dir)
+    {
         var vec = DirVec.GetVector(dir);
 
         if (!(_actualDieScript is null)) _actualDieScript.Roll(dir);
@@ -75,8 +82,9 @@ public class PushDetection : MonoBehaviour
         if (!(overlap is null) && overlap.name.Contains("Wall")) return;
         // Code voor het duwen.
         PushOn(dir, vec);
+
     }
-    
+
     internal void PushOn(Direction dir, Vector2 vec)
     {
         
@@ -87,6 +95,7 @@ public class PushDetection : MonoBehaviour
         if (PushPhase == 0)
         {
             if (!(_actualDieScript is null)) _actualDieScript.StopRolling();
+            if (_actualDieScript.BounceBackWhenDone) _actualDieScript.BounceBack();
             return;
         }
         StartCoroutine(WaitThenPushOn(dir, vec));

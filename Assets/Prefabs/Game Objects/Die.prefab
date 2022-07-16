@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: 0
+  _groundObject: 0
 --- !u!1 &1840734502029665458
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: 1
+  _groundObject: 0
 --- !u!1 &2524424676949705226
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: 1
+  _groundObject: 0
 --- !u!1 &4425513943608995474
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6247964239620399635}
   - component: {fileID: 1452353974139517929}
+  - component: {fileID: 1222186200577081741}
   m_Layer: 0
   m_Name: ActualDie
   m_TagString: Untagged
@@ -511,6 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushDetection: {fileID: 1359719622505602185}
+  _die: {fileID: 1222186200577081741}
   _top: {fileID: 2600563264409016081}
   _bottom: {fileID: 2228431068334560591}
   _left: {fileID: 7277640600087887694}
@@ -518,6 +523,20 @@ MonoBehaviour:
   _back: {fileID: 4148126962635804844}
   _front: {fileID: 4937846240249819121}
   _knippertime: 0.5
+--- !u!114 &1222186200577081741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4425513943608995474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d668727a7a7914c96617bc4980e307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rangeH: 000000000000000000000000
+  _rangeV: 000000000000000000000000
 --- !u!1 &4429239942979431297
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: 1
+  _groundObject: 0
 --- !u!1 &6519261619809277947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,6 +1026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: 0
+  _groundObject: 0
 --- !u!50 &9153764082971792364
 Rigidbody2D:
   serializedVersion: 4
@@ -1196,6 +1217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: 1
+  _groundObject: 0
 --- !u!1 &8277302915015829754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,6 +1331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: 1
+  _groundObject: 0
 --- !u!1 &8541611618355707040
 GameObject:
   m_ObjectHideFlags: 0
