@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -999
-  m_Sprite: {fileID: 21300000, guid: 52c6ab7b1c9e15b49b44ef764aa269fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eca1053a93b0eb4458770140ec471d4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,3 +102,4 @@ MonoBehaviour:
   _deSpawnTime: 0
   _spawnableItem: {fileID: 5011742837364865001, guid: 82248799c9a1890428c4b69ea95eb871, type: 3}
   _spawnPoints: []
+  _yOffset: 0
