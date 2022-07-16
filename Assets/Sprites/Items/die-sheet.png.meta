@@ -182,8 +182,8 @@ TextureImporter:
       name: die-sheet_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 120
+        y: 45
         width: 40
         height: 45
       alignment: 0
@@ -203,7 +203,7 @@ TextureImporter:
       name: die-sheet_4
       rect:
         serializedVersion: 2
-        x: 40
+        x: 0
         y: 0
         width: 40
         height: 45
@@ -224,7 +224,7 @@ TextureImporter:
       name: die-sheet_5
       rect:
         serializedVersion: 2
-        x: 80
+        x: 40
         y: 0
         width: 40
         height: 45
@@ -241,6 +241,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: die-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 40
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e37a81e9e39e5743a449825b22e0647
+      internalID: 2146348789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -253,6 +274,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       die-sheet_5: 755849084
+      die-sheet_6: 2146348789
       die-sheet_3: 2040291295
       die-sheet_2: 451953531
       die-sheet_4: -837611108
