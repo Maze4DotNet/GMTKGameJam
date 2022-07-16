@@ -514,6 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80a9235899b176439ce698fdb51ce41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _confettiBoi: {fileID: 590025394798882205, guid: cbce04b6eecdbe541bad796f7578c214, type: 3}
   _pushDetection: {fileID: 1359719622505602185}
   _die: {fileID: 1222186200577081741}
   _top: {fileID: 2600563264409016081}

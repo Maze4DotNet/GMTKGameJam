@@ -9,7 +9,11 @@ internal class PlayerPushBehavior : MonoBehaviour
 {
     public PlayerMovement _playerMovement;
 
-    private GameObject _currentPushedObject = null;
+    private List<GameObject> _currentPushedObject = new List<GameObject>();
+
+    public ArmAnimator _armAnimator;
+
+    public bool IsPushing { get; set; } = false;
 
     public Direction _pushingDirection { get; private set; }
 
@@ -35,25 +39,21 @@ internal class PlayerPushBehavior : MonoBehaviour
 
         bool xCorrect = _playerMovement._movement.x == dir.x;
         bool yCorrect = _playerMovement._movement.y == dir.y;
+        bool correct = xCorrect && yCorrect;
 
-        pushDetection.IsBeingPushed = xCorrect && yCorrect;
-    }
+        pushDetection.IsBeingPushed = correct;
 
-    private bool IsThisThePushedObjectOrNot(GameObject other)
-    {
-        if (_currentPushedObject is null)
+        if (correct)
         {
-            GetDxDy(out int dx, out int dy);
-            var xDist = Math.Sign(other.transform.position.x - transform.position.x);
-            var yDist = Math.Sign(other.transform.position.y - transform.position.y);
-
-            if (dx == xDist || dy == yDist) return true;
-            else return false;
+            _armAnimator.RenderArms(pushInDir);
+            if (!_currentPushedObject.Contains(other)) _currentPushedObject.Add(other);
         }
-
-        bool alreadyPushing = _currentPushedObject == other;
-        return alreadyPushing;
+        else
+        {
+            RemovePushableObject(other);
+        }
     }
+
 
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -61,6 +61,11 @@ internal class PlayerPushBehavior : MonoBehaviour
         var pushDetection = other.GetComponent<PushDetection>();
         if (pushDetection is null) return;
 
-        pushDetection.IsBeingPushed = false;
+        RemovePushableObject(other);
+    }
+    private void RemovePushableObject(GameObject other)
+    {
+        _currentPushedObject.Remove(other);
+        if (_currentPushedObject.Count == 0) _armAnimator.UnrenderArms();
     }
 }
