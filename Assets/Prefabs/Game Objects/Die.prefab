@@ -385,11 +385,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6836074427621131792}
   - component: {fileID: 6985200441607204785}
-  - component: {fileID: 8392832021194527000}
   - component: {fileID: 1359719622505602185}
   - component: {fileID: 3110825948046654180}
   - component: {fileID: 9153764082971792364}
   - component: {fileID: 3972912904539376860}
+  - component: {fileID: 5814247655776429828}
   m_Layer: 0
   m_Name: Die
   m_TagString: Untagged
@@ -468,26 +468,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8392832021194527000
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6935970144986386708}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e681f26cdf7880c489355f7d601e63fe, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1359719622505602185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _director: {fileID: 0}
+  _dieAnimator: {fileID: 5814247655776429828}
   _topHitbox: {fileID: 533954065943747557}
   _bottomHitbox: {fileID: 7378066876111205222}
   _leftHitbox: {fileID: 3047107085921193684}
@@ -566,6 +547,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &5814247655776429828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6935970144986386708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81578b3a9e000364c9af85e6515d0ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upAnim:
+  - {fileID: 667798052, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: -526809253, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: 451953531, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: 2040291295, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  _downAnim:
+  - {fileID: 667798052, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: 2040291295, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: 451953531, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: -526809253, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  _leftAnim:
+  - {fileID: 667798052, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: -837611108, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: 755849084, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: 2146348789, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  _rightAnim:
+  - {fileID: 667798052, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: 2146348789, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: 755849084, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  - {fileID: -837611108, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+  _idleAnim: {fileID: 0}
 --- !u!1 &8541611618355707040
 GameObject:
   m_ObjectHideFlags: 0
