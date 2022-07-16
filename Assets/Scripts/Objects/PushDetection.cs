@@ -24,6 +24,7 @@ public class PushDetection : MonoBehaviour
     public bool CanBePushed { get; set; } = true;
     public int PushPhase { get; set; } = 0;
     public bool WillRotateWhenDone { get; set; }
+    public int RotatePhase { get; set; } = 0;
     private RotationButtonScript _rotationButtonScript;
 
     public Vector2 _originalPos;
@@ -97,7 +98,9 @@ public class PushDetection : MonoBehaviour
             if (WillRotateWhenDone && !(_rotationButtonScript is null))
             {
                 WillRotateWhenDone = false;
-            _rotationButtonScript.Rotate(_actualDieScript);
+                int rotationDir = _rotationButtonScript.Press(_actualDieScript);
+                _actualDieScript.Rotating = true;
+                StartCoroutine(WaitThenRotateFurther(rotationDir));
             }
             return;
         }
@@ -109,5 +112,13 @@ public class PushDetection : MonoBehaviour
     {
         yield return new WaitForSeconds(_globalParameters._rollDuration / 4);
         PushOn(dir, vec);
+    }
+
+    IEnumerator WaitThenRotateFurther(int dir)
+    {
+        yield return new WaitForSeconds(_globalParameters._rollDuration / 4);
+        RotatePhase = (RotatePhase + 1) % 4;
+        if (RotatePhase == 0) _actualDieScript.Rotate(dir);
+        else StartCoroutine(WaitThenRotateFurther(dir));
     }
 }
