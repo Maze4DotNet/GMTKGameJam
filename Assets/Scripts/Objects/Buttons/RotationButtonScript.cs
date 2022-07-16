@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class RotationButtonScript : MonoBehaviour
 {
-    [SerializeField, Range(-1,1)] public int _dir;
+    [SerializeField, Range(-1, 1)] public int _dir;
     [SerializeField] public bool _reverses = false;
     private SpriteRenderer _renderer;
+
+    private void Awake()
+    {
+        _renderer = GetComponent<SpriteRenderer>();
+    }
 
     public int Press(ActualDieScript dieScript)
     {
@@ -21,10 +26,9 @@ public class RotationButtonScript : MonoBehaviour
         var other = collision.gameObject;
         if (other.name.Contains("Die")) UnPress();
     }
-
     public void UnPress()
     {
-        _renderer.color = new Color(1,1,1, 1);
+        _renderer.color = new Color(1, 1, 1, 1);
 
     }
 }

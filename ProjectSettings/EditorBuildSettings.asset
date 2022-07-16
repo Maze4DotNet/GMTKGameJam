@@ -5,19 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test Scenes/PushingTest.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Menus/LevelSelect.unity
     guid: 0b612b420b57e0e44aa7d16f745329d7
   - enabled: 1
-    path: Assets/Scenes/Levels/Level0.unity
+    path: Assets/Scenes/Levels/Level3.unity
     guid: bf701f195b0bdff4b828306fbd8cac04
-  - enabled: 1
-    path: Assets/Scenes/Levels/Level1.unity
-    guid: 5a85c8683ee54194cbc3b5d27df79f24
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Levels/Level2.unity
-    guid: 4ce88366a4d16d14694d8b0827feace0
+    guid: 03797cab59be88440be15e6bb1e57ec7
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1.unity
+    guid: e9ce37780c444d34398dd5304ce3f574
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level4.unity
+    guid: c59cdf30cfd13f347bb1b4c2266cd332
   m_configObjects: {}
