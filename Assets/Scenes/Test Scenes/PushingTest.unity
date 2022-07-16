@@ -254,8 +254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b2c98c8147a9a4496b80abbbb6f0db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requiredPushingTime: 0.5
-  _rollDuration: 0.5
+  _requiredPushingTime: 0.2
+  _rollDuration: 0.2
   _rollSpeed: 0.5
 --- !u!1001 &712125492
 PrefabInstance:
