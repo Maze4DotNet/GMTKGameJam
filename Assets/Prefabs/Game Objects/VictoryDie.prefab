@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5077756857922374229}
   - component: {fileID: 5077756857922374228}
   - component: {fileID: 5077756857922374226}
+  - component: {fileID: -171625891532720763}
   m_Layer: 0
   m_Name: VictoryDie
   m_TagString: Untagged
@@ -105,3 +106,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-171625891532720763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5077756857922374231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a86e441fea62e48b1594a92790b476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: 0
+  _groundObject: 0

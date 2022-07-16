@@ -474,6 +474,7 @@ GameObject:
   - component: {fileID: 6247964239620399635}
   - component: {fileID: 1452353974139517929}
   - component: {fileID: 1222186200577081741}
+  - component: {fileID: 5932159592497277115}
   m_Layer: 0
   m_Name: ActualDie
   m_TagString: Untagged
@@ -515,7 +516,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _confettiBoi: {fileID: 590025394798882205, guid: cbce04b6eecdbe541bad796f7578c214, type: 3}
+  _victoryDie: {fileID: 5077756857922374231, guid: f6aaf8a057ae20146aa83eef09ec1c57, type: 3}
   _pushDetection: {fileID: 1359719622505602185}
+  _levelWin: {fileID: 5932159592497277115}
   _die: {fileID: 1222186200577081741}
   _top: {fileID: 2600563264409016081}
   _bottom: {fileID: 2228431068334560591}
@@ -540,6 +543,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rangeH: 000000000000000000000000
   _rangeV: 000000000000000000000000
+--- !u!114 &5932159592497277115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4425513943608995474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168fefe6f7c9a934e9d17ff4858f1736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4429239942979431297
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +934,7 @@ GameObject:
   - component: {fileID: 9153764082971792364}
   - component: {fileID: 3972912904539376860}
   - component: {fileID: 5814247655776429828}
+  - component: {fileID: 8995551370228692572}
   m_Layer: 0
   m_Name: Die
   m_TagString: Untagged
@@ -1007,7 +1023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae824aac8683e4408b8f01178ef62e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _director: {fileID: 0}
+  _globalParameters: {fileID: 8995551370228692572}
   _dieAnimator: {fileID: 5814247655776429828}
   _actualDieScript: {fileID: 1452353974139517929}
   _topHitbox: {fileID: 533954065943747557}
@@ -1109,6 +1125,21 @@ MonoBehaviour:
   - {fileID: 2146348789, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
   - {fileID: 755849084, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
   - {fileID: -837611108, guid: 11d29dcda2d5cbc448b48f7ab261710f, type: 3}
+--- !u!114 &8995551370228692572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6935970144986386708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b2c98c8147a9a4496b80abbbb6f0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _requiredPushingTime: 0.2
+  _rollDuration: 0.2
+  _rollSpeed: 0.5
 --- !u!1 &7674325979771378943
 GameObject:
   m_ObjectHideFlags: 0

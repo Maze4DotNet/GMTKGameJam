@@ -9,8 +9,7 @@ using UnityEngine.Tilemaps;
 
 public class PushDetection : MonoBehaviour
 {
-    public GameObject _director;
-    private GlobalParameters _globalParameters;
+    public GlobalParameters _globalParameters;
     public DieAnimator _dieAnimator;
     public ActualDieScript _actualDieScript;
 
@@ -28,12 +27,6 @@ public class PushDetection : MonoBehaviour
     public Vector2 _originalPos;
 
     public float _pushedTime = 0f;
-
-    private void Start()
-    {
-        _director = GameObject.Find("Director");
-        _globalParameters = _director.GetComponent<GlobalParameters>();
-    }
 
     public Direction? CanBePushedInThisDirection()
     {
@@ -74,15 +67,12 @@ public class PushDetection : MonoBehaviour
     {
         var vec = DirVec.GetVector(dir);
 
-        if (!(_actualDieScript is null)) _actualDieScript.Roll(dir);
-
         var nextPos = transform.position + new Vector3(vec.x * _globalParameters._rollSpeed, vec.y * _globalParameters._rollSpeed, 0f);
-
         var overlap = Physics2D.OverlapBox(nextPos, new Vector2(_globalParameters._rollSpeed / 2f, _globalParameters._rollSpeed / 2f), 0);
-        if (!(overlap is null) && overlap.name.Contains("Wall")) return;
-        // Code voor het duwen.
+        if (!(overlap is null) && overlap.name.Contains("Wall") || _actualDieScript is null) return;
+       
+        _actualDieScript.Roll(dir);
         PushOn(dir, vec);
-
     }
 
     internal void PushOn(Direction dir, Vector2 vec)

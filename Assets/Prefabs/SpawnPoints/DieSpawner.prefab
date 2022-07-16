@@ -102,4 +102,4 @@ MonoBehaviour:
   _deSpawnTime: 0
   _spawnableItem: {fileID: 6935970144986386708, guid: 39f758d41bae70d42b02b30c6f3c9b93, type: 3}
   _spawnPoints: []
-  _yOffset: -0.05
+  _yOffset: 0.1

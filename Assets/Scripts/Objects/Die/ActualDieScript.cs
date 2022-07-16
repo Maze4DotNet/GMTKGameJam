@@ -6,7 +6,9 @@ using UnityEngine;
 public class ActualDieScript : MonoBehaviour
 {
     public GameObject _confettiBoi;
+    public GameObject _victoryDie;
     public PushDetection _pushDetection;
+    public LevelWin _levelWin;
     public DieDatastructure _die;
     public TextMesh _top;
     public TextMesh _bottom;
@@ -55,7 +57,7 @@ public class ActualDieScript : MonoBehaviour
         int alpha = _alpha;
         if (_won) alpha = 0;
         Color mainColor = new Color(0, 0, 0, alpha);
-        Color otherColor = new Color(0,0,0, 0.5f * alpha * _knipper);
+        Color otherColor = new Color(1,0.5f,0.5f, alpha * _knipper);
 
         _top.color = mainColor;
         _front.color = mainColor;
@@ -118,7 +120,13 @@ public class ActualDieScript : MonoBehaviour
     IEnumerator WaitThenConfetti()
     {
         yield return new WaitForSeconds(0.5f);
+        Instantiate(_victoryDie, new Vector3( transform.position.x,transform.position.y+0.1f,0), Quaternion.identity);
+        var spriteRenderer = GetComponentInParent<SpriteRenderer>();
+        spriteRenderer.color = new Color(0, 0, 0, 0);
+        yield return new WaitForSeconds(0.15f);
         Instantiate(_confettiBoi, new Vector3(transform.position.x, transform.position.y + 0.2f,0),Quaternion.identity);
+        yield return new WaitForSeconds(2f);
+        _levelWin.Win();
     }
 
     internal void StopNumbers()
