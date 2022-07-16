@@ -15,8 +15,22 @@ public class DieAnimator : MonoBehaviour
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
-    public void ChangeSprite(int frame)
+    public void ChangeSprite(int frame, Direction dir)
     {
-        _spriteRenderer.sprite = _upAnim[frame];
+        switch (dir)
+        {
+            case Up:
+                _spriteRenderer.sprite = _upAnim[frame];
+                break;
+            case Down:
+                _spriteRenderer.sprite = _downAnim[frame];
+                break;
+            case Left:
+                _spriteRenderer.sprite = _leftAnim[frame];
+                break;
+            case Right:
+                _spriteRenderer.sprite = _rightAnim[frame];
+                break;
+        }
     }
 }
