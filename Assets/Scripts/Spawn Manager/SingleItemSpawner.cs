@@ -6,15 +6,10 @@ using Random = System.Random;
 
 public abstract class SingleItemSpawner : GenericSpawner
 {
-    GameObject _spawnableItem;
+    public GameObject _spawnableItem;
 
     public List<Vector2> _spawnPoints;
-    private Random _random;
-
-    private void Start()
-    {
-        _random = new Random();
-    }
+    private Random _random = new Random();
 
     public override GameObject SpawnItem()
     {
@@ -26,6 +21,6 @@ public abstract class SingleItemSpawner : GenericSpawner
 
     public override GameObject SpawnItemAtLocation(Vector2 point)
     {
-        return Instantiate(_spawnableItem);
+        return Instantiate(_spawnableItem, point, Quaternion.identity);
     }
 }
