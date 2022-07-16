@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Test Scenes/PushingTest.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Levels/Level3.unity
+    path: Assets/Scenes/Menus/LevelSelect.unity
+    guid: 0b612b420b57e0e44aa7d16f745329d7
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level0.unity
     guid: bf701f195b0bdff4b828306fbd8cac04
   - enabled: 1
     path: Assets/Scenes/Levels/Level1.unity
