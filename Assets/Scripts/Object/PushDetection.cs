@@ -11,6 +11,7 @@ public class PushDetection : MonoBehaviour
 {
     public GameObject _director;
     private GlobalParameters _globalParameters;
+    public DieAnimator _dieAnimator;
 
     public PushableObjectHitboxScript _topHitbox;
     public PushableObjectHitboxScript _bottomHitbox;
@@ -79,6 +80,7 @@ public class PushDetection : MonoBehaviour
         transform.position = transform.position + new Vector3(vec.x * _globalParameters._rollSpeed / 4, vec.y * _globalParameters._rollSpeed / 4, 0f);
         print(PushPhase);
         PushPhase = (PushPhase + 1) % 4;
+        _dieAnimator.ChangeSprite(PushPhase);
         if (PushPhase == 0) return;
         StartCoroutine(WaitThenPushOn(vec));
     }
