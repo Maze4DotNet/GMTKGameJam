@@ -523,6 +523,8 @@ MonoBehaviour:
   _back: {fileID: 4148126962635804844}
   _front: {fileID: 4937846240249819121}
   _knippertime: 0.5
+  _alpha: 1
+  _won: 0
 --- !u!114 &1222186200577081741
 MonoBehaviour:
   m_ObjectHideFlags: 0
