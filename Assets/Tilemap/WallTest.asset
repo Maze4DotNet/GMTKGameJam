@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9855b42a32ac9ef489f3bd2f8e467aff, type: 3}
   m_Name: WallTest
   m_EditorClassIdentifier: 
-  _tiles: []
+  _tiles:
+  - {fileID: 11400000, guid: 5f0e392f954b54b4994ece59cb5dd2ae, type: 2}
   _movable: 0
   _pushable: 0
+  _playerSpawn: 0
