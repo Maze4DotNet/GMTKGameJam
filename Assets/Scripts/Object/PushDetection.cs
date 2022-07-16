@@ -70,23 +70,23 @@ public class PushDetection : MonoBehaviour
         var overlap = Physics2D.OverlapBox(nextPos, new Vector2(_globalParameters._rollSpeed / 2f, _globalParameters._rollSpeed / 2f), 0);
         if (!(overlap is null) && overlap.name.Contains("Wall")) return;
         // Code voor het duwen.
-        PushOn(vec);
+        PushOn(dir, vec);
     }
     
-    internal void PushOn(Vector2 vec)
+    internal void PushOn(Direction dir, Vector2 vec)
     {
         
         transform.position = transform.position + new Vector3(vec.x * _globalParameters._rollSpeed / 4, vec.y * _globalParameters._rollSpeed / 4, 0f);
         print(PushPhase);
         PushPhase = (PushPhase + 1) % 4;
         if (PushPhase == 0) return;
-        StartCoroutine(WaitThenPushOn(vec));
+        StartCoroutine(WaitThenPushOn(dir, vec));
     }
 
 
-    IEnumerator WaitThenPushOn(Vector2 vec)
+    IEnumerator WaitThenPushOn(Direction dir, Vector2 vec)
     {
         yield return new WaitForSeconds(_globalParameters._rollDuration / 4);
-        PushOn(vec);
+        PushOn(dir, vec);
     }
 }
