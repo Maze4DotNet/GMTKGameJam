@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-internal static class DirVec
+public static class DirVec
 {
     public static Vector2 GetVector(Direction direction)
     {

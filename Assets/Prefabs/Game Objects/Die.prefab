@@ -406,7 +406,7 @@ Transform:
   m_GameObject: {fileID: 6935970144986386708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5347015374768763640}
@@ -505,6 +505,7 @@ MonoBehaviour:
   _bottomHitbox: {fileID: 7378066876111205222}
   _leftHitbox: {fileID: 3047107085921193684}
   _rightHitbox: {fileID: 2426073653859970030}
+  _originalPos: {x: 0, y: 0}
   _pushedTime: 0
 --- !u!114 &3110825948046654180
 MonoBehaviour:
@@ -556,7 +557,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.125}
+    oldSize: {x: 0.4, y: 0.45}
     newSize: {x: 0.4, y: 0.45}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

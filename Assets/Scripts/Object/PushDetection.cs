@@ -18,10 +18,10 @@ public class PushDetection : MonoBehaviour
     public PushableObjectHitboxScript _rightHitbox;
 
     public bool IsBeingPushed { get; set; }
-
     public bool CanBePushed { get { return PushPhase == 0; }  }
-
     public int PushPhase { get; set; } = 0;
+
+    public Vector2 _originalPos;
 
     public float _pushedTime = 0f;
 
@@ -63,26 +63,30 @@ public class PushDetection : MonoBehaviour
             return;
         }
         var dir = maybeDir.Value;
+        var vec = DirVec.GetVector(dir);
 
+        var nextPos = transform.position + new Vector3(vec.x * _globalParameters._rollSpeed, vec.y * _globalParameters._rollSpeed, 0f);
+
+        var overlap = Physics2D.OverlapBox(nextPos, new Vector2(_globalParameters._rollSpeed / 2f, _globalParameters._rollSpeed / 2f), 0);
+        if (!(overlap is null) && overlap.name.Contains("Wall")) return;
         // Code voor het duwen.
-        PushOn(dir);
+        PushOn(vec);
     }
     
-    internal void PushOn(Direction dir)
+    internal void PushOn(Vector2 vec)
     {
-        var vec = DirVec.GetVector(dir);
         
         transform.position = transform.position + new Vector3(vec.x * _globalParameters._rollSpeed / 4, vec.y * _globalParameters._rollSpeed / 4, 0f);
         print(PushPhase);
         PushPhase = (PushPhase + 1) % 4;
         if (PushPhase == 0) return;
-        StartCoroutine(WaitThenPushOn(dir));
+        StartCoroutine(WaitThenPushOn(vec));
     }
 
 
-    IEnumerator WaitThenPushOn(Direction dir)
+    IEnumerator WaitThenPushOn(Vector2 vec)
     {
         yield return new WaitForSeconds(_globalParameters._rollDuration / 4);
-        PushOn(dir);
+        PushOn(vec);
     }
 }
