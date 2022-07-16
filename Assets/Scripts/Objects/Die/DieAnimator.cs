@@ -9,6 +9,7 @@ public class DieAnimator : MonoBehaviour
     public List<Sprite> _downAnim;
     public List<Sprite> _leftAnim;
     public List<Sprite> _rightAnim;
+    public List<Sprite> _spinAnim;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,16 @@ public class DieAnimator : MonoBehaviour
             case Direction.Right:
                 _spriteRenderer.sprite = _rightAnim[frame];
                 break;
+        }
+    }
+
+    public void SpinSprite(int frame, int dir)
+    {
+        if(dir == 1)
+            _spriteRenderer.sprite = _spinAnim[frame];
+        else
+        {
+            _spriteRenderer.sprite = _spinAnim[4-frame];
         }
     }
 }
