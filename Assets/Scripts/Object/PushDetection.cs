@@ -12,6 +12,7 @@ public class PushDetection : MonoBehaviour
     public GameObject _director;
     private GlobalParameters _globalParameters;
     public DieAnimator _dieAnimator;
+    public ActualDieScript _actualDieScript;
 
     public PushableObjectHitboxScript _topHitbox;
     public PushableObjectHitboxScript _bottomHitbox;
@@ -66,6 +67,8 @@ public class PushDetection : MonoBehaviour
         var dir = maybeDir.Value;
         var vec = DirVec.GetVector(dir);
 
+        if (!(_actualDieScript is null)) _actualDieScript.Roll(dir);
+
         var nextPos = transform.position + new Vector3(vec.x * _globalParameters._rollSpeed, vec.y * _globalParameters._rollSpeed, 0f);
 
         var overlap = Physics2D.OverlapBox(nextPos, new Vector2(_globalParameters._rollSpeed / 2f, _globalParameters._rollSpeed / 2f), 0);
@@ -81,7 +84,11 @@ public class PushDetection : MonoBehaviour
         print(PushPhase);
         PushPhase = (PushPhase + 1) % 4;
         _dieAnimator.ChangeSprite(PushPhase, dir);
-        if (PushPhase == 0) return;
+        if (PushPhase == 0)
+        {
+            if (!(_actualDieScript is null)) _actualDieScript.StopRolling();
+            return;
+        }
         StartCoroutine(WaitThenPushOn(dir, vec));
     }
 

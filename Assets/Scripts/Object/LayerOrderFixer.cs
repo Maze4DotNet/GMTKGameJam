@@ -7,15 +7,18 @@ using UnityEngine;
 
 internal class LayerOrderFixer : MonoBehaviour
 {
-    private SpriteRenderer _renderer;
+    private Renderer _renderer;
+    public bool _text = false;
 
     private void Awake()
     {
-        _renderer = GetComponent<SpriteRenderer>();
+        _renderer = GetComponent<Renderer>();
     }
 
     private void Update()
     {
-        _renderer.sortingOrder = (int)(-transform.position.y * 10);
+        int textMod = 0;
+        if (_text) textMod = 10;
+        _renderer.sortingOrder = (int)(-transform.position.y * 10+textMod);
     }
 }
