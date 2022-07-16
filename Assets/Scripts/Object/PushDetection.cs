@@ -80,7 +80,7 @@ public class PushDetection : MonoBehaviour
         transform.position = transform.position + new Vector3(vec.x * _globalParameters._rollSpeed / 4, vec.y * _globalParameters._rollSpeed / 4, 0f);
         print(PushPhase);
         PushPhase = (PushPhase + 1) % 4;
-        _dieAnimator.ChangeSprite(PushPhase);
+        _dieAnimator.ChangeSprite(PushPhase, dir);
         if (PushPhase == 0) return;
         StartCoroutine(WaitThenPushOn(dir, vec));
     }
