@@ -13,6 +13,7 @@ public class DieAnimator : MonoBehaviour
     void Start()
     {
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        _spriteRenderer.sprite = _upAnim[0];
     }
 
     public void ChangeSprite(int frame, Direction dir)
