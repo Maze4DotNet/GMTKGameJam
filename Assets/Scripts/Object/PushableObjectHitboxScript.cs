@@ -11,7 +11,7 @@ public class PushableObjectHitboxScript : MonoBehaviour
     private void CheckIfThisIsPlayer(Collider2D collision, bool enter)
     {
         var other = collision.gameObject;
-        if (other.tag == "Players") IsActive = enter;
+        if (other.tag == "Player") IsActive = enter;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
