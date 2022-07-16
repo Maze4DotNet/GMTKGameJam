@@ -30,7 +30,6 @@ internal class PlayerPushBehavior : MonoBehaviour
         var maybePushInDir = pushDetection.CanBePushedInThisDirection();
         if (maybePushInDir is null) return;
 
-        bool stillPushing = false;
         var pushInDir = maybePushInDir.Value;
         var dir = DirVec.GetVector(pushInDir);
 

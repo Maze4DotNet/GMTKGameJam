@@ -6,7 +6,7 @@ using UnityEngine;
 public class ActualDieScript : MonoBehaviour
 {
     public PushDetection _pushDetection;
-    private DieDatastructure _die = new DieDatastructure();
+    public DieDatastructure _die;
     public TextMesh _top;
     public TextMesh _bottom;
     public TextMesh _left;
@@ -15,11 +15,16 @@ public class ActualDieScript : MonoBehaviour
     public TextMesh _front;
     [SerializeField, Range(0f, 2f)] private float _knippertime = 0.5f;
     private int _knipper = 1;
-    private int _alpha = 1;
+    public int _alpha = 1;
+    private Direction _lastDir = Direction.Down;
+    public bool _won = false;
+
+    public bool BounceBackWhenDone { get; set; } = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        _die = new DieDatastructure();
         _die.Init(1, 2);
         _alpha = 1;
         SetColor();
@@ -46,8 +51,10 @@ public class ActualDieScript : MonoBehaviour
 
     public void SetColor()
     {
-        Color mainColor = new Color(0, 0, 0, _alpha);
-        Color otherColor = new Color(0,0,0, 0.5f * _alpha * _knipper);
+        int alpha = _alpha;
+        if (_won) alpha = 0;
+        Color mainColor = new Color(0, 0, 0, alpha);
+        Color otherColor = new Color(0,0,0, 0.5f * alpha * _knipper);
 
         _top.color = mainColor;
         _front.color = mainColor;
@@ -60,6 +67,7 @@ public class ActualDieScript : MonoBehaviour
 
     internal void Roll(Direction dir)
     {
+        _lastDir = dir;
         _alpha = 0;
         SetColor();
         _die.Roll(dir);
@@ -79,6 +87,38 @@ public class ActualDieScript : MonoBehaviour
     internal void StopRolling()
     {
         _alpha = 1;
+        SetColor();
+    }
+
+    internal void BounceBack()
+    {
+        BounceBackWhenDone = false;
+        Direction dir;
+        if (_lastDir == Direction.Left) dir = Direction.Right;
+        else if (_lastDir == Direction.Right) dir = Direction.Left;
+        else if (_lastDir == Direction.Up) dir = Direction.Down;
+        else dir = Direction.Up;
+        _pushDetection.CanBePushed = false;
+        StartCoroutine(WaitThenBounceBack(dir));
+    }
+
+    IEnumerator WaitThenBounceBack(Direction dir)
+    {
+        yield return new WaitForSeconds(0.15f);
+        _pushDetection.CanBePushed = true;
+        _pushDetection.ActualRoll(dir);
+    }
+
+    internal void Win()
+    {
+        _pushDetection.CanBePushed = false;
+    }
+
+    internal void StopNumbers()
+    {
+        _won = true;
+        _alpha = 0;
+        StopAllCoroutines();
         SetColor();
     }
 }
