@@ -79,6 +79,7 @@ public class PushDetection : MonoBehaviour
             {
                 _rotationButtonScript = overlap.gameObject.GetComponent<RotationButtonScript>();
                 WillRotateWhenDone = true;
+                _actualDieScript.Rotating = true;
             }
         }
         _actualDieScript.Roll(dir);
