@@ -9,6 +9,7 @@ public class ActualDieScript : MonoBehaviour
     public GameObject _victoryDie;
     public PushDetection _pushDetection;
     public LevelWin _levelWin;
+
     public DieDatastructure _die;
     public TextMesh _top;
     public TextMesh _bottom;
@@ -136,5 +137,11 @@ public class ActualDieScript : MonoBehaviour
         StopAllCoroutines();
         SetColor();
         StartCoroutine(WaitThenConfetti());
+    }
+
+    internal void Rotate(int dir)
+    {
+        _die.Rotate(dir);
+        SetNumbers();
     }
 }
