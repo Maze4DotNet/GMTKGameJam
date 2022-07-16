@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ActualDieScript : MonoBehaviour
 {
+    public GameObject _confettiBoi;
     public PushDetection _pushDetection;
     public DieDatastructure _die;
     public TextMesh _top;
@@ -114,11 +115,18 @@ public class ActualDieScript : MonoBehaviour
         _pushDetection.CanBePushed = false;
     }
 
+    IEnumerator WaitThenConfetti()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(_confettiBoi, new Vector3(transform.position.x, transform.position.y + 0.2f,0),Quaternion.identity);
+    }
+
     internal void StopNumbers()
     {
         _won = true;
         _alpha = 0;
         StopAllCoroutines();
         SetColor();
+        StartCoroutine(WaitThenConfetti());
     }
 }
