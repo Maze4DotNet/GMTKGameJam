@@ -165,10 +165,4 @@ public class ButtonScript : MonoBehaviour
         _spriteRenderer.color = new Color(1, 1, 1, 1);
         SetColor();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

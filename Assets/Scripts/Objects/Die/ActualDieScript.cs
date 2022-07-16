@@ -24,6 +24,7 @@ public class ActualDieScript : MonoBehaviour
     public bool _won = false;
 
     public bool BounceBackWhenDone { get; set; } = false;
+    public bool Rotating { get; set; } = false;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +57,7 @@ public class ActualDieScript : MonoBehaviour
     public void SetColor()
     {
         int alpha = _alpha;
-        if (_won) alpha = 0;
+        if (_won || Rotating) alpha = 0;
         Color mainColor = new Color(0, 0, 0, alpha);
         Color otherColor = new Color(1,0.5f,0.5f, alpha * _knipper);
 
@@ -139,9 +140,10 @@ public class ActualDieScript : MonoBehaviour
         StartCoroutine(WaitThenConfetti());
     }
 
-    internal void Rotate(int dir)
+    public void Rotate(int dir)
     {
         _die.Rotate(dir);
         SetNumbers();
+        Rotating = false;
     }
 }
