@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ArmAnimator : MonoBehaviour
 {
-    public bool _renderArms;
     private Animator _anim;
     private SpriteRenderer _spriteRenderer;
     // Start is called before the first frame update
@@ -12,6 +11,7 @@ public class ArmAnimator : MonoBehaviour
     {
         _anim = gameObject.GetComponent<Animator>();
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        UnrenderArms();
     }
     public void RenderArms(Direction dir){
         _spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
