@@ -23,6 +23,8 @@ public class PushDetection : MonoBehaviour
 
     public bool CanBePushed { get; set; } = true;
     public int PushPhase { get; set; } = 0;
+    public bool WillRotateWhenDone { get; set; }
+    private RotationButtonScript _rotationButtonScript;
 
     public Vector2 _originalPos;
 
@@ -69,15 +71,22 @@ public class PushDetection : MonoBehaviour
 
         var nextPos = transform.position + new Vector3(vec.x * _globalParameters._rollSpeed, vec.y * _globalParameters._rollSpeed, 0f);
         var overlap = Physics2D.OverlapBox(nextPos, new Vector2(_globalParameters._rollSpeed / 2f, _globalParameters._rollSpeed / 2f), 0);
-        if (!(overlap is null) && overlap.name.Contains("Wall") || _actualDieScript is null) return;
-       
+        if (!(overlap is null))
+        {
+            if (overlap.name.Contains("Wall") || _actualDieScript is null) return;
+            if (overlap.name.Contains("Rotation"))
+            {
+                _rotationButtonScript = overlap.gameObject.GetComponent<RotationButtonScript>();
+                WillRotateWhenDone = true;
+            }
+        }
         _actualDieScript.Roll(dir);
         PushOn(dir, vec);
     }
 
     internal void PushOn(Direction dir, Vector2 vec)
     {
-        
+
         transform.position = transform.position + new Vector3(vec.x * _globalParameters._rollSpeed / 4, vec.y * _globalParameters._rollSpeed / 4, 0f);
         PushPhase = (PushPhase + 1) % 4;
         _dieAnimator.ChangeSprite(PushPhase, dir);
@@ -85,6 +94,11 @@ public class PushDetection : MonoBehaviour
         {
             if (!(_actualDieScript is null)) _actualDieScript.StopRolling();
             if (_actualDieScript.BounceBackWhenDone) _actualDieScript.BounceBack();
+            if (WillRotateWhenDone && !(_rotationButtonScript is null))
+            {
+                WillRotateWhenDone = false;
+            _rotationButtonScript.Rotate(_actualDieScript);
+            }
             return;
         }
         StartCoroutine(WaitThenPushOn(dir, vec));
