@@ -18,6 +18,7 @@ public class DoorScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        
         _body = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
         _renderer = GetComponent<SpriteRenderer>();
@@ -35,6 +36,7 @@ public class DoorScript : MonoBehaviour
         _boxCollider.enabled = false;
         _alpha = 0;
         _renderer.sprite = _pressed;
+
         LayerOrderFixer fixer = GetComponent<LayerOrderFixer>();
         _renderer.sortingOrder = -400;
         fixer.Active = false;
@@ -46,6 +48,7 @@ public class DoorScript : MonoBehaviour
         _boxCollider.enabled = true;
         _alpha = 1;
         _renderer.sprite = _normal;
+
         LayerOrderFixer fixer = GetComponent<LayerOrderFixer>();
         fixer.Active = true;
 

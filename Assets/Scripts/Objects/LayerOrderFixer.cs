@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +20,6 @@ internal class LayerOrderFixer : MonoBehaviour
     private void Update()
     {
         if (!Active) return;
-
         int textMod = 0;
         if (_text) textMod = 10;
         int andereMod = 0;
