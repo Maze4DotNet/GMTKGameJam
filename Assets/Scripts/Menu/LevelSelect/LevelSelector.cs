@@ -22,7 +22,9 @@ public class LevelSelector : MonoBehaviour
 
     public static string GetLevelString(int lvl)
     {
-        if (lvl < 10) return $"Level0{lvl}";
+        int lastLevel = 15;
+        if (lvl > lastLevel) return "LevelEnd";
+        else if (lvl < 10) return $"Level0{lvl}";
         else return $"Level{lvl}";
     }
 }
