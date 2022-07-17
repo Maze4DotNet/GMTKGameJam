@@ -13,6 +13,7 @@ public class ActualDieScript : MonoBehaviour
     public GameObject _victoryDie;
     public PushDetection _pushDetection;
     public LevelWin _levelWin;
+    public SoundManager _soundManager;
 
     public DieDatastructure _die;
     public TextMesh _top;
@@ -113,6 +114,7 @@ public class ActualDieScript : MonoBehaviour
 
     internal void BounceBack()
     {
+        _soundManager.PlaySound("red-button");
         BounceBackWhenDone = false;
         Direction dir;
         if (_lastDir == Direction.Left) dir = Direction.Right;
@@ -133,6 +135,7 @@ public class ActualDieScript : MonoBehaviour
     internal void Win()
     {
         _pushDetection.CanBePushed = false;
+        _soundManager.PlaySound("green-button");
     }
 
     IEnumerator WaitThenConfetti()
@@ -143,6 +146,7 @@ public class ActualDieScript : MonoBehaviour
         spriteRenderer.color = new Color(0, 0, 0, 0);
         yield return new WaitForSeconds(0.15f);
         Instantiate(_confettiBoi, new Vector3(transform.position.x, transform.position.y + 0.2f,0),Quaternion.identity);
+        _soundManager.PlaySound("confetti");
         yield return new WaitForSeconds(2f);
         _levelWin.Win();
     }
@@ -161,7 +165,6 @@ public class ActualDieScript : MonoBehaviour
         _die.Rotate(dir);
         SetNumbers();
         Rotating = false;
-
         //StartCoroutine(WaitThenPutNumbersBack());
     }
 

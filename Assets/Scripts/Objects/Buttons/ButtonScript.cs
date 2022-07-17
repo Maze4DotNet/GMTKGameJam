@@ -10,6 +10,7 @@ public class ButtonScript : MonoBehaviour
     public TextMesh _numbersText;
     public List<int> _acceptingNumbers;
     public SpriteRenderer _spriteRenderer;
+    public SoundManager _soundManager;
     [SerializeField, Range(0f, 2f)] private float _knippertime = 0.5f;
     private int _knipper = 1;
     private int _alpha = 1;
@@ -118,6 +119,10 @@ public class ButtonScript : MonoBehaviour
                 Victory(dieScript);
             }
             else BounceBack(dieScript);
+        }
+        else if(_isGreen)
+        {
+            _soundManager.PlaySound("button-wrong");
         }
     }
 

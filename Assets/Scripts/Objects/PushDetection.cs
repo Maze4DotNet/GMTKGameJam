@@ -12,6 +12,7 @@ public class PushDetection : MonoBehaviour
     public GlobalParameters _globalParameters;
     public DieAnimator _dieAnimator;
     public ActualDieScript _actualDieScript;
+    public SoundManager _soundManager;
 
     public PushableObjectHitboxScript _topHitbox;
     public PushableObjectHitboxScript _bottomHitbox;
@@ -82,6 +83,7 @@ public class PushDetection : MonoBehaviour
                 _actualDieScript.Rotating = true;
             }
         }
+        _soundManager.PlaySound("die-push");
         _actualDieScript.Roll(dir);
         PushOn(dir, vec);
     }
@@ -101,6 +103,7 @@ public class PushDetection : MonoBehaviour
                 WillRotateWhenDone = false;
                 int rotationDir = _rotationButtonScript.Press();
                 _actualDieScript.Rotating = true;
+                _soundManager.PlaySound("spin");
                 StartCoroutine(WaitThenRotateFurther(rotationDir));
             }
             return;

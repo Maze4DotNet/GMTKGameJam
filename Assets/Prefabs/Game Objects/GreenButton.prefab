@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 1806564269667314191}
   - component: {fileID: 3186459300350971276}
   - component: {fileID: -5344755505128276719}
+  - component: {fileID: 243088938852068784}
   m_Layer: 0
   m_Name: GreenButton
   m_TagString: Untagged
@@ -231,6 +232,7 @@ MonoBehaviour:
   _numbersText: {fileID: 1799082096038745697}
   _acceptingNumbers: 
   _spriteRenderer: {fileID: 0}
+  _soundManager: {fileID: 243088938852068784}
   _knippertime: 0.5
   _isGreen: 1
   _celebrateTime: 0
@@ -262,6 +264,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.3}
   m_EdgeRadius: 0
+--- !u!114 &243088938852068784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806564269667314188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0f0a696c1f1c14fa9777bcbd4ce0af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: d1c1b7f90d8018e438989a4f523f826c, type: 3}
 --- !u!1 &8116114596428144195
 GameObject:
   m_ObjectHideFlags: 0
