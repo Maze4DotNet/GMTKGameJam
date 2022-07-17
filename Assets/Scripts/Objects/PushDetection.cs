@@ -56,6 +56,7 @@ public class PushDetection : MonoBehaviour
 
     internal void Push()
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Wait();
         IsBeingPushed = false;
         var maybeDir = CanBePushedInThisDirection();
         if (!maybeDir.HasValue)

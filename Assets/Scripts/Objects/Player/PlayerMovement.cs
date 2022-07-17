@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,8 +10,40 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D _body;
     public Animator _animator;
     [SerializeField] public Vector2 _movement = new Vector2(0, 0);
+    [SerializeField, Range(0, 10)] private int _dieSteps;
+    private int _dieStepsAlreadyTaken = 0;
+    public bool _isDying = false;
+    public bool Blocked { get; set; } = false;
 
     public Direction CurrentFacingDirection { get; set; } = Direction.Down;
+
+    public void GuyDie()
+    {
+        _isDying = true;
+        DieStep();
+        StartCoroutine(WaitThenKeepDying());
+    }
+
+    IEnumerator WaitThenKeepDying()
+    {
+        yield return new WaitForSeconds(0.1f);
+        DieStep();
+    }
+
+    internal void DieStep()
+    {
+        var currentScale = transform.localScale;
+        transform.localScale = new Vector3(currentScale.x, currentScale.y * (_dieSteps - ++_dieStepsAlreadyTaken)/_dieSteps, currentScale.z);
+        if (_dieStepsAlreadyTaken < _dieSteps) StartCoroutine(WaitThenKeepDying());
+        else StartCoroutine(WaitThenRestart());
+    }
+
+    IEnumerator WaitThenRestart()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 
     void Awake()
     {
@@ -26,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         else if (_movement.x < 0) CurrentFacingDirection = Direction.Left;
         else if (_movement.y > 0) CurrentFacingDirection = Direction.Up;
         else if (_movement.y < 0) CurrentFacingDirection = Direction.Down;
+
 
         _animator.SetBool("up", false);
         _animator.SetBool("down", false);
@@ -49,9 +84,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    internal void Wait()
+    {
+        Blocked = true;
+        StartCoroutine(WaitThenUnblock());
+    }
+
+    IEnumerator WaitThenUnblock()
+    {
+        yield return new WaitForSeconds(0.15f);
+        Blocked = false;
+    }
+
+    public void Victory()
+    {
+        StopAllCoroutines();
+        Blocked = true;
+        // Animaiton
+    }
+
     private void FixedUpdate()
     {
+        if (_isDying || Blocked) return;
         // Movement
-        _body.MovePosition(_body.position + _movement * _moveSpeed * Time.fixedDeltaTime);
+        var nextPos = _body.position + _movement * _moveSpeed * Time.fixedDeltaTime;
+        _body.MovePosition(nextPos);
     }
 }
