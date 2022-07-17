@@ -12,8 +12,8 @@ public class LeverBehavior : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        if (_flipped) Flip();
         _soundManager = GetComponent<SoundManager>();
+        if (_flipped) Flip();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

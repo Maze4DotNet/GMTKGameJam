@@ -23,6 +23,7 @@ public class DoorScript : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider2D>();
         _renderer = GetComponent<SpriteRenderer>();
         _renderer.sprite = _normal;
+        if (_startOpen) Open();
     }
 
     // Update is called once per frame
