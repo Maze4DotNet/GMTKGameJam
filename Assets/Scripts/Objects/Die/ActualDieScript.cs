@@ -136,6 +136,10 @@ public class ActualDieScript : MonoBehaviour
     {
         _pushDetection.CanBePushed = false;
         _soundManager.PlaySound("green-button");
+        var player = GameObject.FindWithTag("Player");
+        var movement = player.GetComponent<PlayerMovement>();
+        movement.Victory();
+
     }
 
     IEnumerator WaitThenConfetti()
