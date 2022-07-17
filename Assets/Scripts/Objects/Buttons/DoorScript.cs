@@ -13,20 +13,21 @@ public class DoorScript : MonoBehaviour
     public Sprite _pressed;
 
     private int _alpha = 1;
+    [SerializeField] private bool _startOpen;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
         _renderer = GetComponent<SpriteRenderer>();
         _renderer.sprite = _normal;
-            }
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     internal void Open()
@@ -34,6 +35,9 @@ public class DoorScript : MonoBehaviour
         _boxCollider.enabled = false;
         _alpha = 0;
         _renderer.sprite = _pressed;
+        LayerOrderFixer fixer = GetComponent<LayerOrderFixer>();
+        _renderer.sortingOrder = -400;
+        fixer.Active = false;
         //SetColor();
     }
 
@@ -42,6 +46,9 @@ public class DoorScript : MonoBehaviour
         _boxCollider.enabled = true;
         _alpha = 1;
         _renderer.sprite = _normal;
+        LayerOrderFixer fixer = GetComponent<LayerOrderFixer>();
+        fixer.Active = true;
+
         //SetColor();
     }
 

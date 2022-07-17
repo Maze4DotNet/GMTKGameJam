@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1171999786539789579}
   - component: {fileID: 6674531203387475514}
   - component: {fileID: 7849431357720059990}
+  - component: {fileID: 8462648047710211004}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -170,6 +171,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _flipped: 0
   _animator: {fileID: 0}
+--- !u!114 &8462648047710211004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074199683679246407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a86e441fea62e48b1594a92790b476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: 0
+  _groundObject: 0
 --- !u!1 &7577478907672525862
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +198,7 @@ GameObject:
   - component: {fileID: 9094091473567519289}
   - component: {fileID: 2661954392860250237}
   - component: {fileID: 5813442051905423388}
+  - component: {fileID: 2978336626028526572}
   m_Layer: 0
   m_Name: BrownDoor
   m_TagString: Untagged
@@ -321,3 +337,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2978336626028526572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577478907672525862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a86e441fea62e48b1594a92790b476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: 0
+  _groundObject: 0

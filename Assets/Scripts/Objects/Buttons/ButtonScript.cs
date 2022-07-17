@@ -132,7 +132,12 @@ public class ButtonScript : MonoBehaviour
                 var blockScript = GetComponentInChildren<DoorScript>();
                 blockScript.Open();
             }
-            else BounceBack(dieScript);
+            else
+            {
+                BounceBack(dieScript);
+                var push = die.GetComponent<PushDetection>();
+                push.CanBeShot = false;
+            }
         }
         else 
         {
