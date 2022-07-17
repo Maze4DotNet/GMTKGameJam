@@ -120,9 +120,16 @@ public class ButtonScript : MonoBehaviour
             }
             else BounceBack(dieScript);
         }
-        else if(_isGreen)
+        else 
         {
-            _soundManager.PlaySound("button-wrong");
+            if(_isGreen)
+            {
+                _soundManager.PlaySound("button-wrong");
+            }
+            else
+            {
+                _soundManager.PlaySound("button-good");
+            }
         }
     }
 
