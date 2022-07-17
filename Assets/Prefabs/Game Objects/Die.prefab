@@ -84,9 +84,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573671256199082161}
-  m_Text: '2
-
-'
+  m_Text: 6
   m_OffsetZ: 0
   m_CharacterSize: 0.1
   m_LineSpacing: 1
@@ -198,7 +196,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840734502029665458}
-  m_Text: 1
+  m_Text: 5
   m_OffsetZ: 0
   m_CharacterSize: 0.1
   m_LineSpacing: 1
@@ -435,7 +433,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3573719782866485862}
-  m_Text: 3
+  m_Text: 4
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -448,7 +446,7 @@ TextMesh:
   m_Font: {fileID: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4286611711
 --- !u!114 &7455248695191768591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +513,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80a9235899b176439ce698fdb51ce41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _topNumber: 5
+  _frontNumber: 6
+  _forceInit: 0
   _confettiBoi: {fileID: 590025394798882205, guid: cbce04b6eecdbe541bad796f7578c214, type: 3}
   _victoryDie: {fileID: 5077756857922374231, guid: f6aaf8a057ae20146aa83eef09ec1c57, type: 3}
   _pushDetection: {fileID: 1359719622505602185}
@@ -541,8 +542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d668727a7a7914c96617bc4980e307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rangeH: 000000000000000000000000
-  _rangeV: 000000000000000000000000
+  _rangeH: 040000000500000003000000
+  _rangeV: 060000000500000001000000
 --- !u!114 &5932159592497277115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,9 +765,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6361323674592160859}
-  m_Text: '5
-
-'
+  m_Text: 1
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -779,7 +778,7 @@ TextMesh:
   m_Font: {fileID: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4286611711
 --- !u!114 &4244165190506258375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1229,7 +1228,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7674325979771378943}
-  m_Text: 4
+  m_Text: 3
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -1242,7 +1241,7 @@ TextMesh:
   m_Font: {fileID: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4286611711
 --- !u!114 &7077345919196157726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,9 +1340,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8277302915015829754}
-  m_Text: '6
-
-'
+  m_Text: 2
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -1356,7 +1353,7 @@ TextMesh:
   m_Font: {fileID: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4286611711
 --- !u!114 &7865975069823653602
 MonoBehaviour:
   m_ObjectHideFlags: 0

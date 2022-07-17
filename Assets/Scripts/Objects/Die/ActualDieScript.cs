@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class ActualDieScript : MonoBehaviour
 {
+    [SerializeField, Range(1, 6)] private int _topNumber = 1; 
+    [SerializeField, Range(1, 6)] private int _frontNumber = 2;
+    [SerializeField] private bool _forceInit = false;
+
     public GameObject _confettiBoi;
     public GameObject _victoryDie;
     public PushDetection _pushDetection;
@@ -26,16 +30,28 @@ public class ActualDieScript : MonoBehaviour
     public bool BounceBackWhenDone { get; set; } = false;
     public bool Rotating { get; set; } = false;
 
+    private void Update()
+    {
+        if (_forceInit)
+        {
+            InitDie(_topNumber, _frontNumber);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        _die = new DieDatastructure();
-        _die.Init(1, 2);
         _alpha = 1;
-        SetColor();
-        SetNumbers();
+        InitDie(1, 2);
 
         StartCoroutine(WaitThenDissappear());
+    }
+
+    private void InitDie(int top, int front)
+    {
+        _die.Init(top, front);
+        SetColor();
+        SetNumbers();
     }
 
     IEnumerator WaitThenDissappear()
