@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
     {
         StopAllCoroutines();
         Blocked = true;
-        // Animaiton
+        _animator.SetBool("win", true);
     }
 
     private void FixedUpdate()
