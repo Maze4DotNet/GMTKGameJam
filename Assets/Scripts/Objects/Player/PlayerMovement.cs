@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Range(0f, 100f)] public float _moveSpeed = 5f;
     public Rigidbody2D _body;
     public Animator _animator;
+    public SoundManager _soundManager;
     [SerializeField] public Vector2 _movement = new Vector2(0, 0);
     [SerializeField, Range(0, 10)] private int _dieSteps;
     private int _dieStepsAlreadyTaken = 0;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public void GuyDie()
     {
         _isDying = true;
+        _soundManager.PlaySound("disappear");
         DieStep();
         StartCoroutine(WaitThenKeepDying());
     }
@@ -48,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         _animator = GetComponent<Animator>();
+        _soundManager = GetComponent<SoundManager>();
     }
     // Update is called once per frame
     void Update()
