@@ -15,6 +15,7 @@ public class ButtonScript : MonoBehaviour
     private int _knipper = 1;
     private int _alpha = 1;
     [SerializeField] public bool _isGreen;
+    [SerializeField] public bool _isBlue;
     private float _r;
     private float _g;
     private float _b;
@@ -34,6 +35,13 @@ public class ButtonScript : MonoBehaviour
             _g = 255f / 255f;
             _b = 194f / 255f;
             acceptPart = "Accepting";
+        }
+        else if (_isBlue)
+        {
+            _r = 195f / 255f;
+            _g = 194f / 255f;
+            _b = 255f / 255f; 
+            acceptPart = "Open On:";
         }
         else
         {
@@ -118,18 +126,17 @@ public class ButtonScript : MonoBehaviour
                 dieScript.Win();
                 Victory(dieScript);
             }
+            else if (_isBlue)
+            {
+                _soundManager.PlaySound("button-good");
+                var blockScript = GetComponentInChildren<DoorScript>();
+                blockScript.Open();
+            }
             else BounceBack(dieScript);
         }
         else 
         {
-            if(_isGreen)
-            {
                 _soundManager.PlaySound("button-wrong");
-            }
-            else
-            {
-                _soundManager.PlaySound("button-good");
-            }
         }
     }
 
@@ -176,5 +183,11 @@ public class ButtonScript : MonoBehaviour
         _alpha = 1;
         _spriteRenderer.color = new Color(1, 1, 1, 1);
         SetColor();
+
+        if (_isBlue)
+        {
+            var blockScript = GetComponentInChildren<DoorScript>();
+            blockScript.Close();
+        }
     }
 }

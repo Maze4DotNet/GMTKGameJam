@@ -18,8 +18,9 @@ public class RotationButtonScript : MonoBehaviour
 
     private void Start()
     {
-        if (_reverses) _renderer.sprite = _yellow;
-        else _renderer.sprite = _blue;
+        //if (_reverses) _renderer.sprite = _yellow;
+        //else _renderer.sprite = _blue;
+        _renderer.sprite = _yellow;
         transform.localScale = new Vector3(_dir, 1, 1);
     }
 
