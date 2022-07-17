@@ -34,7 +34,7 @@ public class LeverBehavior : MonoBehaviour
         _animator.SetBool("flipped", true);
         _soundManager.PlaySound("lever-flip");
         var doorScript = GetComponentInChildren<DoorScript>();
-        doorScript.Open();
+        doorScript.Switch();
     }
     public void UnFlip()
     {
@@ -42,6 +42,6 @@ public class LeverBehavior : MonoBehaviour
         _animator.SetBool("flipped", false);
         _soundManager.PlaySound("lever-unflip");
         var doorScript = GetComponentInChildren<DoorScript>();
-        doorScript.Close();
+        doorScript.Switch();
     }
 }

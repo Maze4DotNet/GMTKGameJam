@@ -130,7 +130,7 @@ public class ButtonScript : MonoBehaviour
             {
                 _soundManager.PlaySound("button-good");
                 var blockScript = GetComponentInChildren<DoorScript>();
-                blockScript.Open();
+                blockScript.Switch();
             }
             else
             {
@@ -192,7 +192,7 @@ public class ButtonScript : MonoBehaviour
         if (_isBlue)
         {
             var blockScript = GetComponentInChildren<DoorScript>();
-            blockScript.Close();
+            blockScript.GoToDefaultState();
         }
     }
 }
