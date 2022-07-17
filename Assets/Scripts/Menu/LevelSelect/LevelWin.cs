@@ -17,7 +17,9 @@ public class LevelWin : MonoBehaviour
         }
 
         Debug.Log("Level " + PlayerPrefs.GetInt("levelsUnlocked") + " unlocked!");
-        
-        SceneManager.LoadScene("Level" + (levelNumber + 1).ToString());
+
+        string nextLevel = LevelSelector.GetLevelString(levelNumber + 1);
+
+        SceneManager.LoadScene(nextLevel);
     }
 }
