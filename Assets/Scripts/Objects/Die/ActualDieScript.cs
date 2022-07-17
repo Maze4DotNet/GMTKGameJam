@@ -126,7 +126,6 @@ public class ActualDieScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         Instantiate(_victoryDie, new Vector3( transform.position.x,transform.position.y+0.1f,0), Quaternion.identity);
-        _soundManager.PlaySound("box-open");
         var spriteRenderer = GetComponentInParent<SpriteRenderer>();
         spriteRenderer.color = new Color(0, 0, 0, 0);
         yield return new WaitForSeconds(0.15f);
