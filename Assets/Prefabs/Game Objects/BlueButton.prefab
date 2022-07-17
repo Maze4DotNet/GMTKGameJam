@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7438614619769374074}
   - component: {fileID: 6288005224048501803}
   m_Layer: 0
-  m_Name: blauweblok
+  m_Name: BlueDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

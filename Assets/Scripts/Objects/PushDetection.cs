@@ -78,7 +78,7 @@ public class PushDetection : MonoBehaviour
         {
             foreach (var obj in overlap)
             {
-                if (obj.name.Contains("Wall") || _actualDieScript is null) return;
+                if (obj.name.Contains("Wall") || obj.name.Contains("Door") || obj.name.Contains("Lever") || _actualDieScript is null) return;
                 if (obj.name.Contains("Rotation"))
                 {
                     _rotationButtonScript = obj.gameObject.GetComponent<RotationButtonScript>();
