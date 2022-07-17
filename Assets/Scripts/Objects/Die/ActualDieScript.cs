@@ -25,8 +25,9 @@ public class ActualDieScript : MonoBehaviour
     [SerializeField, Range(0f, 2f)] private float _knippertime = 0.5f;
     private int _knipper = 1;
     public int _alpha = 1;
-    private Direction _lastDir = Direction.Down;
+    public Direction _lastDir = Direction.Down;
     public bool _won = false;
+
 
     public bool BounceBackWhenDone { get; set; } = false;
     public bool Rotating { get; set; } = false;
@@ -129,7 +130,7 @@ public class ActualDieScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.15f);
         _pushDetection.CanBePushed = true;
-        _pushDetection.ActualRoll(dir);
+        _pushDetection.ActualRoll(dir, true);
     }
 
     internal void Win()

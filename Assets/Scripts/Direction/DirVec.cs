@@ -29,4 +29,12 @@ public static class DirVec
             }
         }
     }
+
+    public static Direction GetDirection(Vector2 vec)
+    {
+        if (vec.x == 1) return Direction.Right;
+        if (vec.x == -1) return Direction.Left;
+        if (vec.y == 1) return Direction.Up;
+        return Direction.Down;
+    }
 }

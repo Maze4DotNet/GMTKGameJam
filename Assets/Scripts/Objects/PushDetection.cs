@@ -23,6 +23,7 @@ public class PushDetection : MonoBehaviour
     public bool PhaseIsZero { get { return PushPhase == 0; } }
 
     public bool CanBePushed { get; set; } = true;
+    public bool CanBeShot { get; set; } = true;
     public int PushPhase { get; set; } = 0;
     public bool WillRotateWhenDone { get; set; }
     public int RotatePhase { get; set; } = 0;
@@ -54,6 +55,12 @@ public class PushDetection : MonoBehaviour
         if (_pushedTime > _globalParameters._requiredPushingTime) Push();
     }
 
+    internal void Shot(int dx, int dy)
+    {
+        Direction dir = DirVec.GetDirection(new Vector2(dx, dy));
+        if (CanBePushed && CanBeShot) ActualRoll(dir, false);
+    }
+
     internal void Push()
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Wait();
@@ -65,11 +72,15 @@ public class PushDetection : MonoBehaviour
             return;
         }
         var dir = maybeDir.Value;
-        ActualRoll(dir);
+        ActualRoll(dir, true);
     }
 
-    public void ActualRoll(Direction dir)
+    public void ActualRoll(Direction dir, bool rollOrSlide)
     {
+        if (!CanBePushed) return;
+        CanBeShot = false;
+        CanBePushed = false;
+        _actualDieScript._lastDir = dir;
         var vec = DirVec.GetVector(dir);
 
         var nextPos = transform.position + new Vector3(vec.x * _globalParameters._rollSpeed, vec.y * _globalParameters._rollSpeed, 0f);
@@ -78,7 +89,7 @@ public class PushDetection : MonoBehaviour
         {
             foreach (var obj in overlap)
             {
-                if (obj.name.Contains("Wall") || obj.name.Contains("Door") || obj.name.Contains("Lever") || _actualDieScript is null) return;
+                if (obj.name.Contains("Wall") || obj.name.Contains("Door") || obj.name.Contains("Lever") || (obj.name.Contains("Die") && obj != gameObject) || _actualDieScript is null) return;
                 if (obj.name.Contains("Rotation"))
                 {
                     _rotationButtonScript = obj.gameObject.GetComponent<RotationButtonScript>();
@@ -86,19 +97,29 @@ public class PushDetection : MonoBehaviour
                     _actualDieScript.Rotating = true;
                     break;
                 }
+                if (obj.name.Contains("Red"))
+                {
+                    CanBeShot = false;
+                }
             }
         }
-        _soundManager.PlaySound("die-push");
-        _actualDieScript.Roll(dir);
-        PushOn(dir, vec);
+        if (rollOrSlide)
+        {
+            _soundManager.PlaySound("die-push");
+            _actualDieScript.Roll(dir);
+        }
+        else
+        {
+            //_soundManager.PlaySound("bullet-hitting-die");
+        }
+        PushOn(dir, vec, rollOrSlide);
     }
 
-    internal void PushOn(Direction dir, Vector2 vec)
+    internal void PushOn(Direction dir, Vector2 vec, bool rollOrSlide)
     {
-
         transform.position = transform.position + new Vector3(vec.x * _globalParameters._rollSpeed / 4, vec.y * _globalParameters._rollSpeed / 4, 0f);
         PushPhase = (PushPhase + 1) % 4;
-        _dieAnimator.ChangeSprite(PushPhase, dir);
+        if (rollOrSlide) _dieAnimator.ChangeSprite(PushPhase, dir);
         if (PushPhase == 0)
         {
             if (!(_actualDieScript is null)) _actualDieScript.StopRolling();
@@ -109,26 +130,34 @@ public class PushDetection : MonoBehaviour
                 int rotationDir = _rotationButtonScript.Press();
                 _actualDieScript.Rotating = true;
                 _soundManager.PlaySound("spin");
-                StartCoroutine(WaitThenRotateFurther(rotationDir));
+                StartCoroutine(WaitThenRotateFurther(rotationDir, rollOrSlide));
             }
+            CanBePushed = true;
+            StartCoroutine(WaitThenEnableShooting());
             return;
         }
-        StartCoroutine(WaitThenPushOn(dir, vec));
+        StartCoroutine(WaitThenPushOn(dir, vec, rollOrSlide));
     }
 
 
-    IEnumerator WaitThenPushOn(Direction dir, Vector2 vec)
+    IEnumerator WaitThenPushOn(Direction dir, Vector2 vec, bool rollOrSlide)
     {
         yield return new WaitForSeconds(_globalParameters._rollDuration / 4);
-        PushOn(dir, vec);
+        PushOn(dir, vec, rollOrSlide);
     }
 
-    IEnumerator WaitThenRotateFurther(int dir)
+    IEnumerator WaitThenEnableShooting()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CanBeShot = true;
+    }
+
+    IEnumerator WaitThenRotateFurther(int dir, bool rollOrSlide)
     {
         yield return new WaitForSeconds(_globalParameters._rollDuration / 4);
         RotatePhase = (RotatePhase + 1) % 4;
         _dieAnimator.SpinSprite(RotatePhase, dir);
         if (RotatePhase == 0) _actualDieScript.Rotate(dir);
-        else StartCoroutine(WaitThenRotateFurther(dir));
+        else StartCoroutine(WaitThenRotateFurther(dir, rollOrSlide));
     }
 }
