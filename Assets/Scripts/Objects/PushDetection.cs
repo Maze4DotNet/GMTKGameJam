@@ -72,15 +72,19 @@ public class PushDetection : MonoBehaviour
         var vec = DirVec.GetVector(dir);
 
         var nextPos = transform.position + new Vector3(vec.x * _globalParameters._rollSpeed, vec.y * _globalParameters._rollSpeed, 0f);
-        var overlap = Physics2D.OverlapBox(nextPos, new Vector2(_globalParameters._rollSpeed / 2f, _globalParameters._rollSpeed / 2f), 0);
+        var overlap = Physics2D.OverlapBoxAll(nextPos, new Vector2(_globalParameters._rollSpeed / 2f, _globalParameters._rollSpeed / 2f), 0);
         if (!(overlap is null))
         {
-            if (overlap.name.Contains("Wall") || _actualDieScript is null) return;
-            if (overlap.name.Contains("Rotation"))
+            foreach (var obj in overlap)
             {
-                _rotationButtonScript = overlap.gameObject.GetComponent<RotationButtonScript>();
-                WillRotateWhenDone = true;
-                _actualDieScript.Rotating = true;
+                if (obj.name.Contains("Wall") || _actualDieScript is null) return;
+                if (obj.name.Contains("Rotation"))
+                {
+                    _rotationButtonScript = obj.gameObject.GetComponent<RotationButtonScript>();
+                    WillRotateWhenDone = true;
+                    _actualDieScript.Rotating = true;
+                    break;
+                }
             }
         }
         _soundManager.PlaySound("die-push");

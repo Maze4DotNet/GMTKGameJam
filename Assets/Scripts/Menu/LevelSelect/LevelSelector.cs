@@ -16,6 +16,13 @@ public class LevelSelector : MonoBehaviour
 
     public void OpenScene()
     {
-        SceneManager.LoadScene("Level" + level.ToString());
+        string levelString = GetLevelString(level);
+        SceneManager.LoadScene(levelString);
+    }
+
+    public static string GetLevelString(int lvl)
+    {
+        if (lvl < 10) return $"Level0{lvl}";
+        else return $"Level{lvl}";
     }
 }
